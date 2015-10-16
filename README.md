@@ -18,18 +18,20 @@ The distribution package is the end result of building this project:
 
     dist/
     ├── css/
-       ├── flippyUI.css
+       ├── grunt-starter-kit.css
     ├── js/
-       ├── flippyUI.js
+       ├── grunt-starter-kit.js
     ├── font/
        ├── FontAwesome.otf
        ├── fontawesome-webfont.eot
        ├── fontawesome-webfont.svg
        ├── fontawesome-webfont.ttf
        ├── fontawesome-webfont.woff
+       ├── fontawesome-webfont.woff2
     ├── img/
-       ├── favicon.ico
        ├── banner.png
+       ├── favicon.ico
+       ├── logo.png
 
 Community
 -------

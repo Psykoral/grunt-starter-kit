@@ -1,8 +1,7 @@
 FlippyUI - grunt-starter-kit
 ====
 Build Status:
-- master: [![Build Status](http://wcmsbuild.corp.adobe.com/jenkins/buildStatus/icon?job=aceui_reimagine_master&style=plastic)](http://wcmsbuild.corp.adobe.com/jenkins/view/AceUI/job/aceui_reimagine_master/)
-- dev: [![Build Status](http://wcmsbuild.corp.adobe.com/jenkins/buildStatus/icon?job=aceui_reimagine_dev&style=plastic)](http://wcmsbuild.corp.adobe.com/jenkins/view/AceUI/job/aceui_reimagine_dev/)
+- master: [![Build Status](http://build.flippydisk.com/buildStatus/icon?job=Grunt%20Starter%20Kit&style=plastic)](http://build.flippydisk.com/job/Grunt%20Starter%20Kit/)
 
 Project template built from FlippyUI. grunt-starter-kit includes:
 
@@ -10,7 +9,7 @@ Project template built from FlippyUI. grunt-starter-kit includes:
 - Project specific Grunt runner.
 - bower.json and package.json for common dependencies.
 - AMD Javascript sources specific to grunt-starter-kit.
-- Reference Design Library: http://pnote.flippydisk.com/
+- Reference Design Library: http://flippydisk.com/
 
 Distribution Package
 -------

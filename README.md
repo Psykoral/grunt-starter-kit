@@ -1,7 +1,7 @@
 FlippyUI - grunt-starter-kit
 ====
 Build Status:
-- master: [![Build Status](http://build.flippydisk.com/buildStatus/icon?job=Grunt%20Starter%20Kit&style=plastic)](http://build.flippydisk.com/job/Grunt%20Starter%20Kit/)
+- master: [![Build Status](http://build.flippydisk.com/buildStatus/icon?job=GruntStarterKit)](http://build.flippydisk.com/job/GruntStarterKit/)
 
 Project template built from FlippyUI. grunt-starter-kit includes:
 

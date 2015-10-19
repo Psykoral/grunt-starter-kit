@@ -29,10 +29,7 @@
     }
   ],
   "homepage": "http://flippydisk.com",
-  "licenses": {
-    "type": "MIT",
-    "url": "http://rem.mit-license.org/"
-  },
+  "license": "MIT",
   "dependencies": {
     "grunt-template-jasmine-requirejs": "~0.2.3",
     "phantomjs": "~1.9.17"

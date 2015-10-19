@@ -111,13 +111,13 @@ module.exports = function (grunt) {
 		concurrent: {
 			test: [
 				'jshint',
-				'jscs',
-				'jasmine:spec'
+				'jscs'//,
+				//'jasmine:spec'
 			],
 			main: [
 				'jshint',
 				'jscs',
-				'jasmine:spec',
+				//'jasmine:spec',
 				'less:dist',
 				'less:min',
 				'requirejs:combine',
@@ -125,7 +125,7 @@ module.exports = function (grunt) {
 			],
 			demo: [
 				'jshint',
-				'jasmine:spec',
+				//'jasmine:spec',
 				'requirejs:demo',
 				'requirejs:combine'
 			]
@@ -448,8 +448,8 @@ module.exports = function (grunt) {
 					'spec/**/*.js'
 				],
 				tasks: [
-					'jshint:spec',
-					'jasmine:spec'
+					'jshint:spec'//,
+					//'jasmine:spec'
 				]
 			},
 			livetests: {

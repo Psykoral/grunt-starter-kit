@@ -11,5 +11,8 @@ require.config({
 	},
 	packages: [
 
-	]
+	],
+	shim: {
+
+	}
 });

@@ -32,7 +32,7 @@ define(['can'], function (can) {
 		 * @memberof Debug
 		 */
 		init: function (el, options) {
-			if (!options.debug && typeof options.control != null && window.location.search.indexOf('flippy:debug=' + options.control) > -1) {
+			if (!options.debug && typeof options.control !== null && window.location.search.indexOf('flippy:debug=' + options.control) > -1) {
 				this.options.debug = true;
 				this.log('Enabling URL Debug mode for ' + this.options.control);
 			}

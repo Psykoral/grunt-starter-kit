@@ -1,7 +1,6 @@
 /**
  * @file Flippydisk Grunt Starter Kit
- * @author Adobe Client Engineering
- * @version: 0.0.1
+ * @author Psykoral
  * @extends demo
  */
 

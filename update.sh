@@ -9,6 +9,8 @@ echo "running bower update..."
 bower update
 echo "running bower install..."
 bower install
+echo "clearing npm cache..."
+npm cache clear
 echo "pruning unused npm modules..."
 npm prune
 echo "running npm update..."

@@ -2,12 +2,26 @@
 	"name": "grunt-starter-kit",
 	"version": "0.0.2",
 	"description": "Grunt stack starter kit",
-	"main": "Gruntfile.js",
+	"main": "src/js/main.js",
 	"scripts": {
 		"test": "grunt test",
-		"build": "grunt build",
+		"livetests": "grunt livetests",
 		"compile": "grunt",
 		"web": "grunt live"
+	},
+	"jscsConfig": {
+		"preset": "crockford",
+		"disallowDanglingUnderscores": {
+			"allExcept": [
+				"_super"
+			]
+		},
+		"validateIndentation": "\t",
+		"requireDotNotation": {
+			"allExcept": [
+				"snake_case"
+			]
+		}
 	},
 	"repository": {
 		"type": "git",
@@ -29,38 +43,39 @@
 		}
 	],
 	"homepage": "http://flippydisk.com",
-	"license": "MIT",
+	"license": "SEE LICENSE IN LICENSE.txt",
 	"dependencies": {
-		"grunt-template-jasmine-requirejs": "~0.2.3",
-		"phantomjs": "~1.9.17"
+		"grunt-template-jasmine-requirejs": "https://github.com/radum/grunt-template-jasmine-requirejs.git",
+		"phantomjs-prebuilt": "~2.1.7",
+		"lodash": "^4.13.1"
 	},
 	"devDependencies": {
-		"assemble": "~0.4.42",
-		"bower": "^1.0.0",
-		"grunt": "~0.4.5",
+		"bower": "^1.7.9",
+		"grunt": "~1.0.1",
+		"grunt-assemble": "~0.4.0",
 		"grunt-autoprefixer": "^3.0.3",
-		"grunt-bower-requirejs": "^2.0.0",
+		"grunt-bump": "0.8.0",
+		"grunt-npm": "0.0.2",
+		"grunt-cli": "~1.2.0",
 		"grunt-concurrent": "~1.0.0",
-		"grunt-contrib-clean": "~0.6.0",
-		"grunt-contrib-compress": "~0.13.0",
-		"grunt-contrib-concat": "~0.5.1",
-		"grunt-contrib-connect": "~0.10.1",
-		"grunt-contrib-copy": "~0.8.0",
-		"grunt-contrib-jasmine": "~0.8.2",
-		"grunt-contrib-jshint": "~0.11.2",
-		"grunt-contrib-less": "~1.0.1",
-		"grunt-contrib-requirejs": "~0.4.4",
-		"grunt-contrib-watch": "~0.6.1",
-		"grunt-dependo": "~0.1.2",
-		"grunt-jscs": "^1.8.0",
-		"grunt-jsdoc": "^0.6.7",
-		"grunt-string-replace": "^1.2.0",
-		"less-plugin-autoprefix": "^1.4.2",
+		"grunt-contrib-clean": "~1.0.0",
+		"grunt-contrib-concat": "~1.0.1",
+		"grunt-contrib-connect": "~1.0.2",
+		"grunt-contrib-copy": "~1.0.0",
+		"grunt-contrib-jasmine": "~1.0.0",
+		"grunt-contrib-jshint": "~1.0.0",
+		"grunt-contrib-less": "~1.3.0",
+		"grunt-contrib-requirejs": "~1.0.0",
+		"grunt-contrib-watch": "~1.0.0",
+		"grunt-jscs": "^3.0.0",
+		"grunt-jsdoc": "~2.1.0",
+		"grunt-string-replace": "^1.3.0-beta.1",
+		"less-plugin-autoprefix": "^1.5.1",
 		"less-plugin-clean-css": "^1.5.0",
-		"load-grunt-tasks": "~3.2.0",
-		"time-grunt": "~1.2.1"
+		"load-grunt-tasks": "~3.5.0",
+		"time-grunt": "~1.3.0"
 	},
 	"engines": {
-		"node": ">=0.10.21"
+		"node": ">=4"
 	}
 }

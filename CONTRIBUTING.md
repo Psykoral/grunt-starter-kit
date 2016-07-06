@@ -7,7 +7,7 @@ Contributing
 
 Install [Git](//git-scm.com/).
 
-Set up your corporate Github account and SSH key:
+Set up your Github account and SSH key:
 
 1. [Create account at GitHub](https://github.com/).
 2. [Set up an SSH key](https://help.github.com/articles/generating-ssh-keys).
@@ -34,41 +34,41 @@ From within the directory that you created run the following commands:
     git pull upstream master
 
 ##Code Format and Style
-JavaScript format is being validated by `JSCS` using the Crockford preset. Please review [http://javascript.crockford.com/code.html] for detail.
+JavaScript format is being validated by `JSCS` using the Crockford preset. Please review [http://javascript.crockford.com/code.html] for details.
 
-For indentation though, we are using Tabs that is 4 spaces wide.
+For indentation, we are using Tabs that are 4 spaces wide.
 
 JavaScript markup should look like:
 
-  function awesome (sauce) {
-      var flavor = sauce;
-      return flavor;
-  }
+	function awesome (sauce) {
+		var flavor = sauce;
+		return flavor;
+	}
 
 LESS markup should appear the same:
 
-  .awesomeMixin (@record) {
-      property: value;
-  }
+	.awesomeMixin (@record) {
+		property: value;
+	}
 
-  .superStar {
-      .anotherRemixin (@whaaa) {
-          .awesomeMixin(zepplin);
-      }
-  }
+	.superStar {
+		.anotherRemixin (@whaaa) {
+			.awesomeMixin(zepplin);
+		}
+	}
 
 If a project does not contain a `.editorconfig` please use the one in this document in your local setup at the root.
 
-  # http://editorconfig.org
-  root = true
+	# http://editorconfig.org
+	root = true
 
-  [*]
-  indent_style = tab
-  indent_size = 4
-  end_of_line = lf
-  charset = utf-8
-  trim_trailing_whitespace = true
-  insert_final_newline = true
+	[*]
+	indent_style = tab
+	indent_size = 4
+	end_of_line = lf
+	charset = utf-8
+	trim_trailing_whitespace = true
+	insert_final_newline = true
 
 To ensure that your IDE (Webstorm or IntelliJ) is using this configuration:
 

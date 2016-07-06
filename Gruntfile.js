@@ -2,16 +2,16 @@ module.exports = function (grunt) {
 	'use strict';
 	require('time-grunt')(grunt);
 	require('load-grunt-tasks')(grunt);
-	grunt.loadNpmTasks('assemble');
+	grunt.loadNpmTasks('grunt-assemble');
 	grunt.loadNpmTasks('grunt-string-replace');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		conf: grunt.file.readYAML('conf.yml'),
-		banner:  '/*!\n<%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("mm-dd-yyyy, h:MM:ss TT") %>\n'.concat(grunt.file.read('LICENSE.txt'), '*/\n\n'),
 		concat: {
 			options: {
-				stripBanners: false,
-				banner: '<%=banner%>'
+				stripBanners: true,
+				banner: '/*!\n<%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd, h:MM:ss TT") %>\n' .concat(grunt.file.read('LICENSE.txt')) + '*/\n\n'
 			},
 			'dist-js': {
 				src: ['<%=conf.dist%>/js/<%=pkg.name%>.js'],
@@ -56,19 +56,6 @@ module.exports = function (grunt) {
 				]
 			}
 		},
-		bowerRequirejs: {
-			options: {
-				exclude: [
-					'easeless',
-					'modernizr',
-					'jquerypp',
-					'requirejs'
-				]
-			},
-			all: {
-				rjsConfig: 'src/js/config.js'
-			}
-		},
 		clean: {
 			dist: {
 				files: [
@@ -93,21 +80,6 @@ module.exports = function (grunt) {
 				]
 			}
 		},
-		compress: {
-			dist: {
-				options: {
-					archive: '<%=conf.dist%>/<%=pkg.name%>-<%=pkg.version%>.zip'
-				},
-				files: [
-					{
-						cwd: '<%=conf.dist%>',
-						src: ['*/**'],
-						expand: true,
-						filter: 'isFile'
-					}
-				]
-			}
-		},
 		concurrent: {
 			test: [
 				'jshint',
@@ -115,17 +87,14 @@ module.exports = function (grunt) {
 				'jasmine:spec'
 			],
 			main: [
-				'jshint',
-				'jscs',
-				'jasmine:spec',
+				'concurrent:test',
 				'less:dist',
 				'less:min',
 				'requirejs:combine',
 				'requirejs:compile'
 			],
 			demo: [
-				'jshint',
-				'jasmine:spec',
+				'concurrent:test',
 				'requirejs:demo',
 				'requirejs:combine'
 			]
@@ -270,7 +239,6 @@ module.exports = function (grunt) {
 			options: {
 				amd: true,
 				specs: 'tests/**/*Spec.js',
-				styles: ['<%=conf.temp%>/css/<%=pkg.name%>.css'],
 				template: require('grunt-template-jasmine-requirejs'),
 				templateOptions: {
 					requireConfigFile: ['<%=conf.src%>/js/config.js']
@@ -310,7 +278,7 @@ module.exports = function (grunt) {
 				'tests/**/*.js',
 				'!**/*jquery*'
 			],
-			options: grunt.file.readYAML('jscs.yml')
+			options: '<%=pkg.jscsConfig%>'
 		},
 		jsdoc: {
 			dist: {
@@ -322,7 +290,6 @@ module.exports = function (grunt) {
 				options: {
 					destination: '<%=conf.temp%>/jsdoc',
 					recurse: true,
-					//template: "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template",
 					configure: '<%=conf.src%>/config/jsdoc.json',
 					private: true
 				}
@@ -340,7 +307,7 @@ module.exports = function (grunt) {
 					jshintrc: '<%=conf.src%>/js/.jshintrc'
 				},
 				files: {
-					src: '<%=conf.src%>/js/{,*/}*.js'
+					src: '<%=conf.src%>/js/**/*.js'
 				}
 			},
 			spec: {
@@ -348,7 +315,7 @@ module.exports = function (grunt) {
 					jshintrc: 'tests/.jshintrc'
 				},
 				files: {
-					src: 'tests/{,*/}*Spec.js'
+					src: 'tests/**/*Spec.js'
 				}
 			}
 		},
@@ -365,16 +332,12 @@ module.exports = function (grunt) {
 				]
 			},
 			dist: {
-				options: {
-					banner: '<%=banner%>'
-				},
 				files: {
 					'<%=conf.dist%>/css/<%=pkg.name%>.css': '<%=conf.src%>/less/main.less'
 				}
 			},
 			min: {
 				options: {
-					banner: '<%=banner%>',
 					plugins: [
 						new (require('less-plugin-autoprefix'))({
 							browsers: ['last 2 versions']
@@ -437,9 +400,7 @@ module.exports = function (grunt) {
 					'spec/**/*.js'
 				],
 				tasks: [
-					'jscs',
-					'jshint:spec',
-					'jasmine:spec'
+					'concurrent:test'
 				]
 			},
 			livetests: {
@@ -454,7 +415,7 @@ module.exports = function (grunt) {
 			},
 			images: {
 				files: [
-					'<%=conf.src%>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+					'<%=conf.src%>/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
 				],
 				tasks: ['copy:temp']
 			},
@@ -474,13 +435,13 @@ module.exports = function (grunt) {
 				files: [
 					'<%=conf.temp%>/css/*',
 					'<%=conf.temp%>/js/*',
-					'<%=conf.temp%>/{,*/}*.html'
+					'<%=conf.temp%>/**/*.html'
 				]
 			}
 		}
 	});
 
-	grunt.registerTask('default', ['bowerRequirejs', 'package']);
+	grunt.registerTask('default', ['build']);
 
 	grunt.registerTask('build', [
 		'clean',
@@ -498,7 +459,45 @@ module.exports = function (grunt) {
 		'concat:dist-min-js'
 	]);
 
-	grunt.registerTask('package', ['build', 'compress']);
+	grunt.registerTask('site', [
+		'assemble:docs',
+		'less:dist',
+		'concurrent:demo',
+		'copy:livetests',
+		'jasmine:livetests',
+		'string-replace',
+		'copy:temp'
+	]);
+
+	grunt.registerTask('live', [
+		'clean',
+		'jscs',
+		'site',
+		'concat:dist-js',
+		'connect:livereload',
+		'watch'
+	]);
+
+	grunt.registerTask('livetests', [
+		'clean',
+		'jsdoc',
+		'less:dist',
+		'copy:livetests',
+		'jasmine:livetests',
+		'string-replace',
+		'connect:livetests',
+		'watch:livetests'
+	]);
+
+	grunt.registerTask('docs', [
+		'clean',
+		'test',
+		'jsdoc',
+		'less:dist',
+		'copy:livetests',
+		'jasmine:livetests',
+		'string-replace'
+	]);
 
 	grunt.registerTask('site', [
 		'assemble:docs',

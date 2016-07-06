@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "0.10"
+  - "4"
 before_script:
-  - npm install grunt-cli -g
+  - npm install -g grunt-cli
   - chmod +x update.sh
   - ./update.sh

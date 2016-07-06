@@ -1,6 +1,6 @@
 {
 	"name": "grunt-starter-kit",
-	"version": "0.0.2",
+	"version": "1.0.2",
 	"description": "Grunt stack starter kit",
 	"main": "src/js/main.js",
 	"scripts": {

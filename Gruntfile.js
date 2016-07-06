@@ -438,6 +438,25 @@ module.exports = function (grunt) {
 					'<%=conf.temp%>/**/*.html'
 				]
 			}
+		},
+		bump: {
+			options: {
+				files: ['bower.json', 'package.json'],
+				updateConfigs: [],
+				commit: true,
+				commitMessage: 'Release %VERSION%',
+				commitFiles: ['-a'],
+				createTag: true,
+				tagName: '%VERSION%',
+				tagMessage: 'See commits in https://github.com/Psykoral/grunt-starter-kit/milestones/%VERSION%',
+				push: true,
+				pushTo: 'upstream',
+				gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+				globalReplace: false,
+				prereleaseName: false,
+				metadata: '',
+				regExp: false
+			}
 		}
 	});
 

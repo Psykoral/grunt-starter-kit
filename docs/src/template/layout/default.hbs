@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" {{#if flippyUI.direction}} dir="{{flippyUI.direction}}" {{/if}}>
     {{> dochead}}
-    <body id="home">
+    <body id="home" data-seed-details>
 	    <header>
 		    <figure>
-			    <img width="576" alt="" src="./img/banner.png">
+			    <img width="300" alt="" src="./img/logo.png">
 			    <figcaption></figcaption>
 		    </figure>
 	    </header>
 	    <aside>
 		    <menu>
-			    <section>
+                <section>
+                    <details>
+                        <summary>
+                            FlippyUI modules
+                        </summary>
+                    </details>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="https://github.com/Psykoral" target="_blank">Github</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Psykoral/pnote" target="_blank">Polish Notation</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Psykoral/grunt-starter-kit" target="_blank">Grunt Starer Kit</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Psykoral/modal-carousel" target="_blank">Modal carousel</a>
+                            </li>
+                            <li>
+                                <a href="https://travis-ci.org/Psykoral/" target="_blank">Travis CI</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+				<section>
 				    <details>
 					    <summary>
 						    Network
@@ -51,20 +77,14 @@
 							    <a href="https://github.com/Psykoral" target="_blank">Github</a>
 						    </li>
 						    <li>
-							    <a href="https://pnote.flippydisk.com" target="_blank">Polish Notation Demo</a>
+							    <a href="http://flippydisk.com/pnote" target="_blank">Polish Notation</a>
 						    </li>
 						    <li>
-							    <a href="https://github.com/Psykoral/grunt-starter-kit" target="_blank">Grunt Starer Kit</a>
+							    <a href="http://flippydisk.com/" target="_blank">Grunt Starer Kit</a>
 						    </li>
-						    <li>
-							    <a href="http://build.flippydisk.com/" target="_blank">Jenkins</a>
-						    </li>
-						    <li>
-							    <a href="https://github.com/Psykoral/plugapi" target="_blank">Plug.dj bot</a>
-						    </li>
-						    <li>
-							    <a href="http://plug.dj/plur-electronica/" target="_blank">Plug.dj room</a>
-						    </li>
+                            <li>
+                                <a href="http://flippydisk.com/modal-carousel" target="_blank">Modal carousel</a>
+                            </li>
 					    </ul>
 				    </nav>
 			    </section>

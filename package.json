@@ -1,7 +1,7 @@
 {
 	"name": "grunt-starter-kit",
 	"version": "1.0.1",
-	"description": "Grunt stack starter kit",
+	"description": "FlippyUI Grunt stack starter kit",
 	"main": "src/js/main.js",
 	"scripts": {
 		"test": "grunt test",

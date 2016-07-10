@@ -81,6 +81,10 @@ module.exports = function (grunt) {
 			}
 		},
 		concurrent: {
+			options: {
+				logConcurrentOutput: true,
+				limit: 15
+			},
 			test: [
 				'jshint',
 				'jscs',
@@ -95,8 +99,8 @@ module.exports = function (grunt) {
 			],
 			demo: [
 				'concurrent:test',
-				'requirejs:demo',
-				'requirejs:combine'
+				'requirejs:combine',
+				'requirejs:compile'
 			]
 		},
 		connect: {
@@ -252,14 +256,14 @@ module.exports = function (grunt) {
 				}
 			},
 			livetests: {
-				src: '<%=conf.src%>/js/**/*.js',
-				cwd: '<%=conf.src%>',
+				src: '<%=conf.temp%>/src/js/**/*.js',
+				cwd: '<%=conf.temp%>',
 				options: {
-					specs: 'tests/**/*Spec.js',
+					specs: '<%=conf.temp%>/tests/**/*Spec.js',
 					keepRunner: true,
 					outfile: '<%=conf.temp%>/tests.html',
 					templateOptions: {
-						requireConfigFile: ['<%=conf.src%>/js/config.js']
+						requireConfigFile: ['<%=conf.temp%>/src/js/config.js']
 					}
 				}
 			},
@@ -359,13 +363,6 @@ module.exports = function (grunt) {
 				name: '../../bower_components/almond/almond',
 				mainConfigFile: '<%=conf.src%>/js/config.js',
 				wrap: true
-			},
-			demo: {
-				options: {
-					optimize: 'none',
-					include: ['demo'],
-					out: '<%=conf.dist%>/js/<%=pkg.name%>.js'
-				}
 			},
 			compile: {
 				options: {
@@ -490,47 +487,6 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('live', [
 		'clean',
-		'jscs',
-		'site',
-		'concat:dist-js',
-		'connect:livereload',
-		'watch'
-	]);
-
-	grunt.registerTask('livetests', [
-		'clean',
-		'jsdoc',
-		'less:dist',
-		'copy:livetests',
-		'jasmine:livetests',
-		'string-replace',
-		'connect:livetests',
-		'watch:livetests'
-	]);
-
-	grunt.registerTask('docs', [
-		'clean',
-		'test',
-		'jsdoc',
-		'less:dist',
-		'copy:livetests',
-		'jasmine:livetests',
-		'string-replace'
-	]);
-
-	grunt.registerTask('site', [
-		'assemble:docs',
-		'less:dist',
-		'concurrent:demo',
-		'copy:livetests',
-		'jasmine:livetests',
-		'string-replace',
-		'copy:temp'
-	]);
-
-	grunt.registerTask('live', [
-		'clean',
-		'jscs',
 		'site',
 		'concat:dist-js',
 		'connect:livereload',

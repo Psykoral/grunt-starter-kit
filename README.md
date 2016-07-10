@@ -56,17 +56,6 @@ The distribution package is the end result of building this project:
        ├── grunt-starter-kit.css
     ├── js/
        ├── grunt-starter-kit.js
-    ├── font/
-       ├── FontAwesome.otf
-       ├── fontawesome-webfont.eot
-       ├── fontawesome-webfont.svg
-       ├── fontawesome-webfont.ttf
-       ├── fontawesome-webfont.woff
-       ├── fontawesome-webfont.woff2
-    ├── img/
-       ├── banner.png
-       ├── favicon.ico
-       ├── logo.png
 
 Community
 -------
